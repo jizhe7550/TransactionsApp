@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/transactionListFragment">
+    <fragment
+        android:id="@+id/transactionListFragment"
+        android:name="com.megatest.myapplication.framework.presentation.list.TransactionListFragment"
+        android:label="fragment_transaction_list"
+        tools:layout="@layout/fragment_transaction_list">
+        <action
+            android:id="@+id/action_transactionListFragment_to_transactionDetailGraph"
+            app:destination="@id/nav_graph_detail" />
+    </fragment>
+    <navigation
+        android:id="@+id/nav_graph_detail"
+        app:startDestination="@id/transactionDetailFragment">
+        <argument
+            android:name="transactionId"
+            app:argType="string"
+            android:defaultValue=""/>
+        <fragment
+            android:id="@+id/transactionDetailFragment"
+            android:name="com.megatest.myapplication.framework.presentation.detail.TransactionDetailFragment"
+            android:label="fragment_transaction_detail"
+            tools:layout="@layout/fragment_transaction_detail">
+            <argument
+                android:name="transactionId"
+                app:argType="string"
+                android:defaultValue=""/>
+            <action
+                android:id="@+id/action_transactionDetailFragment_to_categoryFragment"
+                app:destination="@id/categoryFragment" />
+            <action
+                android:id="@+id/action_transactionDetailFragment_to_datePickerFragment"
+                app:destination="@id/datePickerFragment" />
+            <action
+                android:id="@+id/action_transactionDetailFragment_to_timePickerFragment"
+                app:destination="@id/timePickerFragment" />
+        </fragment>
+        <dialog
+            android:id="@+id/categoryFragment"
+            android:name="com.megatest.myapplication.framework.presentation.detail.CategoryFragment"
+            android:label="CategoryFragment" />
+        <dialog
+            android:id="@+id/datePickerFragment"
+            android:name="com.megatest.myapplication.framework.presentation.detail.DatePickerFragment"
+            android:label="DatePickerFragment" />
+        <dialog
+            android:id="@+id/timePickerFragment"
+            android:name="com.megatest.myapplication.framework.presentation.detail.TimePickerFragment"
+            android:label="TimePickerFragment" />
+    </navigation>
+</navigation>
