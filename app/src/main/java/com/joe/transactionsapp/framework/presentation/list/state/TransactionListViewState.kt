@@ -4,7 +4,8 @@ import com.joe.transactionsapp.business.domain.model.TransactionModel
 
 
 data class TransactionListViewState(
-    var transactionList: ArrayList<TransactionModel>? = null
+    var transactionList: ArrayList<TransactionModel>? = null,
+    var transaction:TransactionModel?=null
 )
 
 

@@ -26,7 +26,6 @@ class TransactionListViewModel @Inject internal constructor(
 
     override fun setStateEvent(stateEvent: StateEvent) {
 
-
         val job: Flow<DataState<TransactionListViewState>?> = when (stateEvent) {
             is GetAllTransactionsFromNetEvent -> {
                 transactionInteractors.getAllTransactionsFromNet(stateEvent)

@@ -48,7 +48,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideCurrencyRetrofit(retrofit: Retrofit.Builder): ApiRetrofit {
+    fun provideApiRetrofit(retrofit: Retrofit.Builder): ApiRetrofit {
         return retrofit
             .build()
             .create(ApiRetrofit::class.java)

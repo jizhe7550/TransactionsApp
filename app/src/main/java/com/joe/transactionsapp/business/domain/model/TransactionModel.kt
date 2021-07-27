@@ -5,5 +5,6 @@ data class TransactionModel(
     val debit: Double,
     val id: String,
     val summary: String,
-    val transactionDate: String
+    val timestamp:Long,
+    val transactionDate: String,
 )

@@ -8,5 +8,19 @@
         android:id="@+id/transactionListFragment"
         android:name="com.joe.transactionsapp.framework.presentation.list.TransactionListFragment"
         android:label="fragment_transaction_list"
-        tools:layout="@layout/fragment_transaction_list"/>
+        tools:layout="@layout/fragment_transaction_list">
+        <action
+            android:id="@+id/action_transactionListFragment_to_transactionDetailFragment"
+            app:destination="@id/transactionDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionDetailFragment"
+        android:name="com.joe.transactionsapp.framework.presentation.detail.TransactionDetailFragment"
+        android:label="TransactionDetailFragment">
+        <argument
+            android:name="transactionId"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+
 </navigation>

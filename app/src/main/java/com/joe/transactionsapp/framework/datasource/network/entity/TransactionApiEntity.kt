@@ -1,6 +1,6 @@
 package com.joe.transactionsapp.framework.datasource.network.entity
 
-data class TransactionEntity(
+data class TransactionApiEntity(
     val credit: Double,
     val debit: Double,
     val id: String,

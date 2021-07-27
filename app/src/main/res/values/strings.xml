@@ -11,4 +11,6 @@
     <string name="text_undo">Undo</string>
     <!-- transaction -->
     <string name="no_transactions">No transactions</string>
+    <string name="debit">Debit:</string>
+    <string name="credit">Credit:</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.joe.transactionsapp.di
 
+import com.joe.transactionsapp.business.data.cache.abstraction.ITransactionCacheDataSource
 import com.joe.transactionsapp.business.data.network.abstraction.ITransactionApiDataSource
 import com.joe.transactionsapp.business.interactors.TransactionInteractors
 import dagger.Module
@@ -16,9 +17,11 @@ object InteractorsModule {
     @Provides
     fun provideTransactionInteractors(
         transactionApiDataSource: ITransactionApiDataSource,
+        transactionCacheDataSource: ITransactionCacheDataSource,
     ): TransactionInteractors {
         return TransactionInteractors(
-            transactionApiDataSource
+            transactionApiDataSource,
+            transactionCacheDataSource,
         )
     }
 }

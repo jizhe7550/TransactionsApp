@@ -2,6 +2,7 @@ package com.joe.transactionsapp.framework.presentation.list
 
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.joe.transactionsapp.R
 import com.joe.transactionsapp.business.domain.model.TransactionModel
@@ -42,6 +43,7 @@ class TransactionListFragment :
                 }
             }
         })
+
         viewModel.shouldDisplayProgressBar.observe(viewLifecycleOwner, {
             uiController.displayProgressBar(it)
         })
@@ -79,6 +81,7 @@ class TransactionListFragment :
     private fun setupRecyclerView() {
         binding.rvTransitionList.apply {
             layoutManager = LinearLayoutManager(activity)
+
             val topSpacingDecorator = TopSpacingItemDecoration(20)
             addItemDecoration(topSpacingDecorator)
 
@@ -89,17 +92,16 @@ class TransactionListFragment :
         }
     }
 
-    private fun navigateToDetailFragment() {
-//        val transactionId = item.id
-//        val direction = TransactionListFragmentDirections.actionTransactionListFragmentToTransactionDetailGraph(
-//            transactionId
-//        )
-//        findNavController().navigate(direction)
+    private fun navigateToDetailFragment(item: TransactionModel) {
+        val transactionId = item.id
+        val direction = TransactionListFragmentDirections.actionTransactionListFragmentToTransactionDetailFragment(
+            transactionId
+        )
+        findNavController().navigate(direction)
     }
 
     override fun onItemSelected(position: Int, item: TransactionModel) {
-
-
+        navigateToDetailFragment(item)
    }
 
     override fun onDestroyView() {
