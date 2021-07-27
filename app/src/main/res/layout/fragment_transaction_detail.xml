@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_text_debit"
             android:layout_alignStart="@+id/tv_summary"
-            android:textColor="@android:color/holo_red_light"
+            android:textColor="@android:color/holo_green_light"
             android:text="@string/credit"
             android:textSize="@dimen/font_size_14" />
 
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/tv_text_credit"
             android:layout_toRightOf="@+id/tv_text_credit"
-            android:textColor="@android:color/holo_red_light"
+            android:textColor="@android:color/holo_green_light"
             android:text=""
             android:textSize="@dimen/font_size_14" />
 

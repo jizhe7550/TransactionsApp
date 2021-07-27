@@ -112,7 +112,7 @@ class TransactionInteractorsTest {
     fun `get transactions failed from network and save to database`(){
 
     }
-    
+
     // TODO
     @Test
     fun `search transaction by id from database failed`(){

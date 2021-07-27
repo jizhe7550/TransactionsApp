@@ -24,11 +24,7 @@ class TransactionDetailViewModel @Inject internal constructor(
     private val transactionInteractors: TransactionInteractors
 ) : BaseViewModel<TransactionViewState>() {
 
-    init {
-        searchTransactionByIdInCache()
-    }
-
-    private fun searchTransactionByIdInCache() {
+    fun searchTransactionByIdInCache() {
         val transactionId: String? =
             savedStateHandle.get<String>(SAFE_ARG_TRANSACTION_ID_SAVED_STATE_KEY)
         transactionId?.let {

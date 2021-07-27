@@ -22,6 +22,7 @@ class TransactionDetailFragment :
     override val viewModel: TransactionDetailViewModel by viewModels()
 
     override fun setupChannel() {
+        viewModel.setupChannel()
     }
 
     override fun subscribeObservers() {
@@ -57,11 +58,11 @@ class TransactionDetailFragment :
         FragmentTransactionDetailBinding.bind(view)
 
     override fun init() {
-        setupUI()
+        setupEvent()
     }
 
-    private fun setupUI() {
-
+    private fun setupEvent() {
+        viewModel.searchTransactionByIdInCache()
     }
 
 }
