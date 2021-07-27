@@ -28,7 +28,7 @@ abstract class ApiResponseHandler <ViewState, Data>(
             is ApiResult.NetworkError -> {
                 DataState.error(
                     response = Response(
-                        message = "${stateEvent?.errorInfo()}\n\nReason: ${NETWORK_ERROR}",
+                        message = "${stateEvent?.errorInfo()}\n\nReason: $NETWORK_ERROR",
                         uiComponentType = UIComponentType.Dialog,
                         messageType = MessageType.Error
                     ),

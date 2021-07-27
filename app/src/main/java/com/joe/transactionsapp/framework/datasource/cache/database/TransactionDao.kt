@@ -10,7 +10,7 @@ import com.joe.transactionsapp.framework.datasource.cache.entity.TransactionCach
 interface TransactionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllTransactions(transactions: List<TransactionCacheEntity>)
+    suspend fun insertAllTransactions(transactions: List<TransactionCacheEntity>):LongArray
 
     @Query("SELECT * FROM transactions ORDER BY timestamp")
     fun getAllTransactions(): List<TransactionCacheEntity>

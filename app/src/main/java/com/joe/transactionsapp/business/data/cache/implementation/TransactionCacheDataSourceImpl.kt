@@ -12,15 +12,15 @@ class TransactionCacheDataSourceImpl
 constructor(
     private val transactionDaoService: ITransactionDaoService
 ) : ITransactionCacheDataSource {
-    override suspend fun insertAllTransactions(transactionList: List<TransactionModel>) {
-        transactionDaoService.insertAllTransactions(transactionList)
+    override suspend fun insertAllTransactions(transactionList: List<TransactionModel>): LongArray {
+        return transactionDaoService.insertAllTransactions(transactionList)
     }
 
     override suspend fun getAllTransactions(): List<TransactionModel> {
         return transactionDaoService.getAllTransactions()
     }
 
-    override suspend fun searchTransactionById(id: String): TransactionModel {
+    override suspend fun searchTransactionById(id: String): TransactionModel? {
         return transactionDaoService.searchTransactionById(id)
     }
 

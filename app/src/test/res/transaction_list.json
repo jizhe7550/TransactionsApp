@@ -1,0 +1,135 @@
+[
+  {
+    "id": "1",
+    "transactionDate": "2021-02-02T08:11:16+13:00",
+    "summary": "Fancy Food Market Auckland",
+    "debit": 197.9,
+    "credit": 0
+  },
+  {
+    "id": "2",
+    "transactionDate": "2021-02-03T00:06:37+13:00",
+    "summary": "Parking Auckland",
+    "debit": 8.25,
+    "credit": 0
+  },
+  {
+    "id": "3",
+    "transactionDate": "2021-02-02T17:22:33+13:00",
+    "summary": "The Local Bar Auckland",
+    "debit": 229.17,
+    "credit": 0
+  },
+  {
+    "id": "4",
+    "transactionDate": "2021-02-04T15:25:52+13:00",
+    "summary": "Salary",
+    "debit": 0,
+    "credit": 2234.45
+  },
+  {
+    "id": "5",
+    "transactionDate": "2021-02-09T14:40:01+13:00",
+    "summary": "Hardware Store Grey Lynn Auckland",
+    "debit": 453.88,
+    "credit": 0
+  },
+  {
+    "id": "6",
+    "transactionDate": "2021-02-04T14:00:54+13:00",
+    "summary": "Transfer from Savings Acc",
+    "debit": 0,
+    "credit": 262.06
+  },
+  {
+    "id": "7",
+    "transactionDate": "2021-02-03T01:02:07+13:00",
+    "summary": "Homewares Auckland",
+    "debit": 489.51,
+    "credit": 0
+  },
+  {
+    "id": "8",
+    "transactionDate": "2021-02-10T00:02:42+13:00",
+    "summary": "Petrol Station Auckland",
+    "debit": 128.63,
+    "credit": 0
+  },
+  {
+    "id": "9",
+    "transactionDate": "2021-02-03T16:08:16+13:00",
+    "summary": "Local Electronics Shop Auckland",
+    "debit": 490.35,
+    "credit": 0
+  },
+  {
+    "id": "10",
+    "transactionDate": "2021-02-08T11:23:56+13:00",
+    "summary": "Parking Auckland",
+    "debit": 8.25,
+    "credit": 0
+  },
+  {
+    "id": "11",
+    "transactionDate": "2021-02-09T01:31:39+13:00",
+    "summary": "Petrol Station Manukau",
+    "debit": 156.9,
+    "credit": 0
+  },
+  {
+    "id": "12",
+    "transactionDate": "2021-02-07T09:28:12+13:00",
+    "summary": "Fancy Food Market Auckland",
+    "debit": 136.47,
+    "credit": 0
+  },
+  {
+    "id": "13",
+    "transactionDate": "2021-02-10T11:00:43+13:00",
+    "summary": "Parking Auckland",
+    "debit": 8.25,
+    "credit": 0
+  },
+  {
+    "id": "14",
+    "transactionDate": "2021-02-06T15:42:40+13:00",
+    "summary": "Grocery Store Auckland",
+    "debit": 250.99,
+    "credit": 0
+  },
+  {
+    "id": "15",
+    "transactionDate": "2021-02-04T17:21:30+13:00",
+    "summary": "Master Mechanics Auckland",
+    "debit": 465.9,
+    "credit": 0
+  },
+  {
+    "id": "16",
+    "transactionDate": "2021-02-03T13:12:38+13:00",
+    "summary": "Curry House Auckland",
+    "debit": 17.67,
+    "credit": 0
+  },
+  {
+    "id": "17",
+    "transactionDate": "2021-02-09T12:58:33+13:00",
+    "summary": "Coffee Shop Auckland",
+    "debit": 5,
+    "credit": 0
+  },
+  {
+    "id": "18",
+    "transactionDate": "2021-02-09T19:19:30+13:00",
+    "summary": "The Sushi Restaurant Auckland",
+    "debit": 90.56,
+    "credit": 0
+  },
+  {
+    "id": "19",
+    "transactionDate": "2021-02-08T13:10:11+13:00",
+    "summary": "Petrol Station Mangawhai",
+    "debit": 175.18,
+    "credit": 0
+  }
+]

@@ -5,7 +5,7 @@ import com.joe.transactionsapp.business.domain.model.TransactionModel
 
 interface ITransactionDaoService {
 
-    suspend fun insertAllTransactions(transactionList:List<TransactionModel>)
+    suspend fun insertAllTransactions(transactionList:List<TransactionModel>): LongArray
 
     suspend fun getAllTransactions(): List<TransactionModel>
 

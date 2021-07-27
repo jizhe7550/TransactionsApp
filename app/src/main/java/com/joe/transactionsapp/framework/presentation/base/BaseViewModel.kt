@@ -8,12 +8,14 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-@kotlinx.coroutines.FlowPreview
+@FlowPreview
+@ExperimentalCoroutinesApi
 abstract class BaseViewModel<ViewState> : ViewModel()
 {
     private val _viewState: MutableLiveData<ViewState> = MutableLiveData()
 
-    val dataChannelManager: DataChannelManager<ViewState>
+
+    private val dataChannelManager: DataChannelManager<ViewState>
             = object: DataChannelManager<ViewState>(){
 
         override fun handleNewData(data: ViewState) {

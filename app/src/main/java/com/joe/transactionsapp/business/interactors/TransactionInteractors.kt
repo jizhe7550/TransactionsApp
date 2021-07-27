@@ -3,7 +3,6 @@ package com.joe.transactionsapp.business.interactors
 import com.joe.transactionsapp.business.data.cache.CacheResponseHandler
 import com.joe.transactionsapp.business.data.cache.abstraction.ITransactionCacheDataSource
 import com.joe.transactionsapp.business.data.network.ApiResponseHandler
-import com.joe.transactionsapp.business.data.network.ApiResult
 import com.joe.transactionsapp.business.data.network.abstraction.ITransactionApiDataSource
 import com.joe.transactionsapp.business.data.util.safeApiCall
 import com.joe.transactionsapp.business.data.util.safeCacheCall
@@ -11,7 +10,9 @@ import com.joe.transactionsapp.business.domain.model.TransactionModel
 import com.joe.transactionsapp.business.domain.state.*
 import com.joe.transactionsapp.framework.presentation.detail.state.TransactionViewState
 import com.joe.transactionsapp.framework.presentation.list.state.TransactionListViewState
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.util.*
@@ -19,13 +20,14 @@ import java.util.*
 class TransactionInteractors(
     private val transactionApiDataSource: ITransactionApiDataSource,
     private val transactionCacheDataSource: ITransactionCacheDataSource,
+    private val dispatcher: CoroutineDispatcher = IO
 ) {
 
     fun getAllTransactionsFromNet(
         stateEvent: StateEvent
     ): Flow<DataState<TransactionListViewState>?> = flow {
 
-        val apiResult = safeApiCall(Dispatchers.IO) {
+        val apiResult = safeApiCall(dispatcher) {
             transactionApiDataSource.getAllTransactionsFromNet()
         }
 
@@ -34,7 +36,7 @@ class TransactionInteractors(
                 response = apiResult,
                 stateEvent = stateEvent
             ) {
-                override suspend fun handleSuccess(resultObj: List<TransactionModel>): DataState<TransactionListViewState>? {
+                override suspend fun handleSuccess(resultObj: List<TransactionModel>): DataState<TransactionListViewState> {
                     var message: String? =
                         GET_ALL_TRANSACTIONS_SUCCESS
                     var uiComponentType: UIComponentType? = UIComponentType.None
@@ -59,16 +61,15 @@ class TransactionInteractors(
 
         emit(response)
 
-        updateCache(response)
+        val message = response?.stateMessage?.response?.message
+        val transactionList = response?.data?.transactionList
+        updateCache(message, transactionList)
     }
 
-    private suspend fun updateCache(response:  DataState<TransactionListViewState>?){
-        if (response?.stateMessage?.response?.message == GET_ALL_TRANSACTIONS_SUCCESS){
-            val transactionList = response.data?.transactionList?.toList()
-            transactionList?.let {
-                safeApiCall(Dispatchers.IO){
-                    transactionCacheDataSource.insertAllTransactions(transactionList)
-                }
+    suspend fun updateCache(message: String?, transactionList: ArrayList<TransactionModel>?) {
+        if (message == GET_ALL_TRANSACTIONS_SUCCESS) {
+            safeApiCall(dispatcher) {
+                transactionList?.let { transactionCacheDataSource.insertAllTransactions(it) }
             }
         }
     }
@@ -78,7 +79,7 @@ class TransactionInteractors(
         stateEvent: StateEvent
     ): Flow<DataState<TransactionViewState>?> = flow {
 
-        val cacheResult = safeCacheCall(Dispatchers.IO) {
+        val cacheResult = safeCacheCall(dispatcher) {
             transactionCacheDataSource.searchTransactionById(id)
         }
 
@@ -87,7 +88,7 @@ class TransactionInteractors(
                 response = cacheResult,
                 stateEvent = stateEvent
             ) {
-                override suspend fun handleSuccess(resultObj: TransactionModel): DataState<TransactionViewState>? {
+                override suspend fun handleSuccess(resultObj: TransactionModel): DataState<TransactionViewState> {
                     return DataState.data(
                         response = Response(
                             message = SEARCH_TRANSACTION_SUCCESS,
@@ -105,11 +106,17 @@ class TransactionInteractors(
         emit(response)
     }
 
+    /**
+     *  TODO FOLLOW SSOT, always looking for data from cache
+     *  1.fetch data from net
+     *  2.save to cache
+     *  3.emit cache data
+     */
     fun getAllTransactionsInCache(
         stateEvent: StateEvent
     ): Flow<DataState<TransactionListViewState>?> = flow {
 
-        val cacheResult = safeCacheCall(Dispatchers.IO) {
+        val cacheResult = safeCacheCall(dispatcher) {
             transactionCacheDataSource.getAllTransactions()
         }
 
@@ -153,8 +160,6 @@ class TransactionInteractors(
         const val GET_ALL_TRANSACTIONS_SUCCESS = "Successfully get all transactions from net"
         const val GET_ALL_TRANSACTIONS_FAILED =
             "Failed to get all transactions from net."
-        const val GET_RATE_FROM_NET_SUCCESS = "Successfully get rate from net."
-        const val PLEASE_INPUT_ALL_THE_FILL = "Please input all the values"
         const val SEARCH_TRANSACTION_SUCCESS = "Successfully search transactions."
         const val SEARCH_TRANSACTION_FAILED = "Failed to search this transaction."
     }

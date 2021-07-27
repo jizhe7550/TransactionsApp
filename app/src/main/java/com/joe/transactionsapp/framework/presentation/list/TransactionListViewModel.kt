@@ -8,9 +8,13 @@ import com.joe.transactionsapp.framework.presentation.base.BaseViewModel
 import com.joe.transactionsapp.framework.presentation.list.state.TransactionListSateEvent.*
 import com.joe.transactionsapp.framework.presentation.list.state.TransactionListViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+@ExperimentalCoroutinesApi
+@FlowPreview
 @HiltViewModel
 class TransactionListViewModel @Inject internal constructor(
     private val transactionInteractors: TransactionInteractors

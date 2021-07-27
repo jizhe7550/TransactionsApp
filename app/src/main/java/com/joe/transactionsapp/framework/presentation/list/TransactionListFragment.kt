@@ -14,7 +14,11 @@ import com.joe.transactionsapp.framework.presentation.adapter.TransactionListAda
 import com.joe.transactionsapp.framework.presentation.common.TopSpacingItemDecoration
 import com.joe.transactionsapp.framework.presentation.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class TransactionListFragment :
     BaseFragment<TransactionListViewModel, FragmentTransactionListBinding>(R.layout.fragment_transaction_list),
@@ -68,10 +72,6 @@ class TransactionListFragment :
     override fun init() {
         setupUI()
         viewModel.retrieveTransactionListFromNet()
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
     private fun setupUI() {

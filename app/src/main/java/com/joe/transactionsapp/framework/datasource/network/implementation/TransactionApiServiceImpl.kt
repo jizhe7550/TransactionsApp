@@ -1,5 +1,7 @@
 package com.joe.transactionsapp.framework.datasource.network.implementation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.joe.transactionsapp.business.domain.model.TransactionModel
 import com.joe.transactionsapp.framework.datasource.network.abstraction.ITransactionApiService
 import com.joe.transactionsapp.framework.datasource.network.mapper.ApiMapper
@@ -15,6 +17,7 @@ constructor(
     private val mapper: ApiMapper,
 ) : ITransactionApiService {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun getAllTransactionsFromNet(): List<TransactionModel> {
         return mapper.entityListToTransactionModelList(apiRetrofit.getTransactionsFromNet())
     }

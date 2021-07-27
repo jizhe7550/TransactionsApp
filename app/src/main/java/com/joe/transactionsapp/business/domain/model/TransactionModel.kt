@@ -1,5 +1,9 @@
 package com.joe.transactionsapp.business.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class TransactionModel(
     val credit: Double,
     val debit: Double,
@@ -7,4 +11,6 @@ data class TransactionModel(
     val summary: String,
     val timestamp:Long,
     val transactionDate: String,
-)
+):Parcelable{
+
+}

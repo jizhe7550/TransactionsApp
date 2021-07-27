@@ -18,8 +18,8 @@ constructor(
     private val cacheMapper: CacheMapper,
 ) : ITransactionDaoService {
 
-    override suspend fun insertAllTransactions(transactionList: List<TransactionModel>) {
-        transactionDao.insertAllTransactions(cacheMapper.transactionModelListToEntityList(transactionList))
+    override suspend fun insertAllTransactions(transactionList: List<TransactionModel>): LongArray {
+        return transactionDao.insertAllTransactions(cacheMapper.transactionModelListToEntityList(transactionList))
     }
 
     override suspend fun getAllTransactions(): List<TransactionModel> {

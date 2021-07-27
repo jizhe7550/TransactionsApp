@@ -10,7 +10,11 @@ import com.joe.transactionsapp.databinding.FragmentTransactionDetailBinding
 import com.joe.transactionsapp.framework.presentation.base.BaseFragment
 import com.joe.transactionsapp.framework.presentation.detail.state.TransactionStateEvent.*
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class TransactionDetailFragment :
     BaseFragment<TransactionDetailViewModel, FragmentTransactionDetailBinding>(R.layout.fragment_transaction_detail) {
